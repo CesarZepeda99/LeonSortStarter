@@ -12,15 +12,20 @@ public class BubleSort implements SortTester {
     }
 
     public static int[] bubleSort(int[] a){
-        for (int i = 0; i < a.length ; i++) {
-            for (int j = 0; j < a.length; j++) {
-                if(a[i] > a[j]){
-                    int temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
+        public void burbuja (int [] array){
+            int res;
+            boolean cam = false;
+            while (true) {// cambios
+                for (int i = 0; i < array.length; i++) {
+                    if (array[i] < array[i - 1]) {
+                        res = array[i];
+                        array[i] = array[i - 1];
+                        array[i - 1] = res;
+                        cam = true;
+
+                    }
                 }
             }
-        }
-        return a;
-    }
-}
+        }}}
+
+
