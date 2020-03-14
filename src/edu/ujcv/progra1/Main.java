@@ -3,11 +3,9 @@ package edu.ujcv.progra1;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-
-        int[] elementos = {3,2,4,5,6,7,9,9,10,3,5};
-        ShuffleSort s = new ShuffleSort();
-        elementos = s.shuffleSort(elementos);
+        int[] elementos = {65,43,32,4,45,56,67,1,2,3,4,5,6,7,8,9,3,8,7,6,5,4,3,3};
+        MergeSort s = new MergeSort();
+        elementos = s.mergeSort(elementos);
 
         for (int i = 0; i < elementos.length; i++) {
             System.out.println(elementos[i]);
