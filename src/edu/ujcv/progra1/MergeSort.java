@@ -36,7 +36,27 @@ public class MergeSort  implements SortTester{
         result = merge(left, right);
         return result;
     }
-
+    private static int[] merge(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
+        int leftPointer, rightPointer, resultPointer;
+        leftPointer = rightPointer = resultPointer = 0;
+        while(leftPointer < left.length || rightPointer < right.length) {
+            if(leftPointer < left.length && rightPointer < right.length) {
+                if(left[leftPointer] < right[rightPointer]) {
+                    result[resultPointer++] = left[leftPointer++];
+                } else {
+                    result[resultPointer++] = right[rightPointer++];
+                }
+            }
+            else if(leftPointer < left.length) {
+                result[resultPointer++] = left[leftPointer++];
+            }
+            else if(rightPointer < right.length) {
+                result[resultPointer++] = right[rightPointer++];
+            }
+        }
+        return result;
+    }
 
 
 }
