@@ -13,6 +13,23 @@ public class QuickSort {
             int pivote;
             int aux;
             pivote = izq;
+            while (izq!=der)
+                (imprimeArreglo(num);
+                while(num[izq]<num[pivote] && izq<der)
+                    der--;
+                while(num[izq]<num[pivote] && izq<der)
+                    izq++;
+
+                if (der!=izq){
+                    aux = num[der];
+                    num[der]= num[izq];
+                    num[izq]=aux;
+                }
+                if (izq==der){
+                    quicksort(num,i,izq-1);
+                    quicksort(num,izq+1,d);
+                }
+
         }
     }
 }
