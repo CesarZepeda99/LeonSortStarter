@@ -1,46 +1,70 @@
 package edu.ujcv.progra1;
 
 public class QuickSort implements SortTester {
+    @Override
     public long sort(int[] array) {
-        long start = System.nanoTime();
-        quicksort(array);
+        long start = System.currentTimeMillis();
+        imprimeArreglo(array);
 
-        long end = System.nanoTime();
+        long end = System.currentTimeMillis();
 
         return end - start;
     }
 
-    public int[] quicksort(int num[]) {
-        return quicksort(num,0,num.length - 1);
+    public static void imprimeArreglo(int[] array) {
+
+        for(int i = 0 ; i < array.length ; i++) {
+            System.out.print(array[i]+" ");
+        }
+        System.out.println("");
+        System.out.println("----------------------");
+
     }
+    public static void quicksort(int[] array, int izq, int der) {
 
-    public int[] quicksort(int num[], int izq, int der) {
-        if (izq >= der)
-            return num;
-        int i = izq, d = der;
-        if (izq != der) {
-            int pivote;
-            int aux;
-            pivote = izq;
-            while (izq != der) {
+        // ELEGIR PIVOTE
+        int pivote = array[izq];
 
-                while (num[izq] < num[pivote] && izq < der)
-                    der--;
-                while (num[izq] < num[pivote] && izq < der)
-                    izq++;
+        // LOS ELEMENTOS > AL PIVOTE VAN A LA DERECHA, LOS < A LA IZQUIERDA
+        // VARIABLES AUXILIARES:
+        // i PARA LOS ELEMENTOS DE LA IZQUIERDA
+        // j PARA LOS ELEMENTOS DE LA DERECHA
+        int i = izq;
+        int j = der;
 
-                if (der != izq) {
-                    aux = num[der];
-                    num[der] = num[izq];
-                    num[izq] = aux;
-                }
+        int swap;
+
+        // SE EVALUAN LOS ELEMENTOS PARA UBICAR EL NUEVO PIVOTE
+        while(i < j) {
+            // MIENTRAS QUE arreglo[i] SEA MENOR O IGUAL AL PIVOTE SE AUMENTA EL VALOR DE i
+            // CUANDO NO SE CUMPLE EL WHILE, EL ELEMENTO EN arreglo[i] ES MAYOR AL PIVOTE
+            // Y DEBE IR A LA DERECHA
+            while(array[i] <= pivote && i < j) {
+                i++;
             }
-            if (izq == der) {
-                quicksort(num, i, izq - 1);
-                quicksort(num, izq + 1, d);
+            // MIENTRAS QUE EL arreglo[j] SEA MAYOR AL PIVOTE SE DISMINUYE j
+            // CUANDO NO SE CUMPLE EL WHILE EL ELEMENTO EN arreglo[j] ES MENOR O IGUAL AL PIVOTE
+            // Y DEBE IR A LA IZQUIERDA
+            while(array[j] > pivote) {
+                j--;
             }
-        } else
-            return num;
-        return num;
+            // SIEMPRE Y CUANDO i SEA MENOR A j, SE HACE UN CAMBIO DE LOS ELEMENTOS
+            if(i < j) {
+                swap = array[i];
+                array[i] = array[j];
+                array[j] = swap;
+
+                imprimeArreglo(array);
+            }
+        }
+        array[izq] = array[j];
+        array[j] = pivote;
+
+        if(izq < j - 1) {
+            quicksort(array, izq, j - 1);
+        }
+        if(j + 1 < der) {
+            quicksort(array, j + 1, der);
+        }
     }
 }
