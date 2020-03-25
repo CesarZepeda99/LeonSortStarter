@@ -1,17 +1,39 @@
 package edu.ujcv.progra1;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
-        int[] elementos = {65,43,32,4,45,56,67,1,2,3,4,5,6,7,8,9,3,8,7,6,5,4,3,3};
-        MergeSort s = new MergeSort();
-        elementos = s.mergeSort(elementos);
-
-        for (int i = 0; i < elementos.length; i++) {
-            System.out.println(elementos[i]);
+     int[] array = new int [100000];
+     Random R = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Math.abs(R.nextInt(1000));
         }
 
-        elementos = new int[]{3,2,4,5,6,7,9,9,10,3,5};
-        System.out.println("\n\ntarda "+ s.sort(elementos)+ " milisegundos");
+
+
+        HeapSort he = new HeapSort();
+        he.heapSort(array);
+        BubleSort bu = new BubleSort();
+        bu.bubleSort(array);
+        MergeSort me = new MergeSort();
+        me.mergeSort(array);
+        QuickSort qu = new QuickSort();
+        int n = array.length;
+        qu.quicksort(array,0,n-1);
+
+
+
+        for (int i = 0; i <array.length ; i++) {
+
+        }
+
+        System.out.println("el quicksort tarda "+ qu.sort(array)+ " milisegundos");
+        System.out.println("el heapsort tarda "+ he.sort(array)+ " milisegundos");
+        System.out.println("el bubblesort tarda "+ bu.sort(array)+ " milisegundos");
+        System.out.println("el mergesort tarda "+ me.sort(array)+ " milisegundos");
+
+        double promedio = qu.sort(array) + he.sort(array) + bu.sort(array) + me.sort(array);
+        System.out.println("El promedio de tiempo de los arrays es de: " + " " + promedio);
     }
 }

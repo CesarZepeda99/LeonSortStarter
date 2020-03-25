@@ -1,6 +1,4 @@
 package edu.ujcv.progra1;
-import java.util.PriorityQueue;
-
 public class HeapSort implements SortTester{
 
     @Override
@@ -30,21 +28,21 @@ public class HeapSort implements SortTester{
     }
 
     public static void ordenar(int array[], int n, int i) {
-        int ind1 = i;
+        int pad = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
-        if (l < n && array[l] > array[ind1])
-            ind1 = l;
+        if (l < n && array[l] > array[pad])
+            pad = l;
 
-        if (r < n && array[r] > array[ind1])
-            ind1 = r;
+        if (r < n && array[r] > array[pad])
+            pad = r;
 
-        if (ind1 != i) {
+        if (pad != i) {
             int ind2 = array[i];
-            array[i] = array[ind1];
-            array[ind1] = ind2;
+            array[i] = array[pad];
+            array[pad] = ind2;
 
-            ordenar(array, n, ind1);
+            ordenar(array, n, pad);
         }
     }
 

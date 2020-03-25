@@ -10,27 +10,24 @@ public class BubleSort implements SortTester {
 
         return end - start;
     }
-    public static int[] bubleSort(int[] array){
-        int res;
-        boolean cam=false;
-        while(true)
-        {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i]<array[i-1]){
-                    res = array[i];
-                    array[i] = array[i-1];
-                    array[i-1] = res;
-                    cam = true;
-
+    public static int[] bubleSort(int[] a){
+        for (int i = 0; i < a.length ; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if(a[j] > a[i]){
+                    int temp = a[j];
+                    a[j] = a[i];
+                    a[i] = temp;
                 }
             }
         }
+        return a;
+    }
 
 
     }
 
 
-}
+
 
 
 

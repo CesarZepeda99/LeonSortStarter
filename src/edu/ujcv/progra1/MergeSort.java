@@ -10,7 +10,7 @@ public class MergeSort  implements SortTester{
 
         return end - start;
     }
-
+//
     public static int[] mergeSort(int[] array) {
         if(array.length <= 1) {
             return array;
